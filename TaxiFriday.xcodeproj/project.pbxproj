@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06643A8B19FC238F00431C48 /* Server.m in Sources */ = {isa = PBXBuildFile; fileRef = 06643A8A19FC238F00431C48 /* Server.m */; };
+		06643A8E19FC591F00431C48 /* AddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06643A8D19FC591F00431C48 /* AddressCell.m */; };
+		06643A9219FCD7AB00431C48 /* SearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06643A9119FCD7AB00431C48 /* SearchCell.m */; };
 		068F143119FBC710008D53B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F143019FBC710008D53B4 /* main.m */; };
 		068F143419FBC710008D53B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F143319FBC710008D53B4 /* AppDelegate.m */; };
-		068F143719FBC710008D53B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F143619FBC710008D53B4 /* ViewController.m */; };
-		068F143A19FBC710008D53B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068F143819FBC710008D53B4 /* Main.storyboard */; };
+		068F143A19FBC710008D53B4 /* Main-iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 068F143819FBC710008D53B4 /* Main-iPhone.storyboard */; };
 		068F143C19FBC710008D53B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 068F143B19FBC710008D53B4 /* Images.xcassets */; };
 		068F143F19FBC710008D53B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068F143D19FBC710008D53B4 /* LaunchScreen.xib */; };
 		068F144B19FBC710008D53B4 /* TaxiFridayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F144A19FBC710008D53B4 /* TaxiFridayTests.m */; };
+		068F145819FBC86A008D53B4 /* RequestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F145719FBC86A008D53B4 /* RequestVC.m */; };
+		068F146B19FBCB4A008D53B4 /* SearchAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F146A19FBCB4A008D53B4 /* SearchAddressVC.m */; };
+		068F147319FBD731008D53B4 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F147219FBD731008D53B4 /* Categories.m */; };
+		068F147619FBDE0F008D53B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F147519FBDE0F008D53B4 /* UIKit.framework */; };
+		068F147919FBDE48008D53B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F147819FBDE48008D53B4 /* Foundation.framework */; };
+		068F147B19FBDE60008D53B4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F147A19FBDE60008D53B4 /* QuartzCore.framework */; };
+		068F147D19FBDE94008D53B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F147C19FBDE94008D53B4 /* CoreGraphics.framework */; };
+		068F148219FBE08E008D53B4 /* HELVETICANEUECYR-BOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F147E19FBE08E008D53B4 /* HELVETICANEUECYR-BOLD.OTF */; };
+		068F148319FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F147F19FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF */; };
+		068F148419FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F148019FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF */; };
+		068F148519FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */; };
+		D88C7B14D386BF24E318DFAD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F7CBFAE11CD09338AADED3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +41,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06643A8919FC238F00431C48 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		06643A8A19FC238F00431C48 /* Server.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Server.m; sourceTree = "<group>"; };
+		06643A8C19FC591F00431C48 /* AddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressCell.h; sourceTree = "<group>"; };
+		06643A8D19FC591F00431C48 /* AddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressCell.m; sourceTree = "<group>"; };
+		06643A9019FCD7AB00431C48 /* SearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCell.h; sourceTree = "<group>"; };
+		06643A9119FCD7AB00431C48 /* SearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCell.m; sourceTree = "<group>"; };
 		068F142B19FBC710008D53B4 /* TaxiFriday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaxiFriday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		068F142F19FBC710008D53B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		068F143019FBC710008D53B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		068F143219FBC710008D53B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		068F143319FBC710008D53B4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		068F143519FBC710008D53B4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		068F143619FBC710008D53B4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		068F143919FBC710008D53B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		068F143919FBC710008D53B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Base.lproj/Main-iPhone.storyboard"; sourceTree = "<group>"; };
 		068F143B19FBC710008D53B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		068F143E19FBC710008D53B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		068F144419FBC710008D53B4 /* TaxiFridayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaxiFridayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		068F144919FBC710008D53B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		068F144A19FBC710008D53B4 /* TaxiFridayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaxiFridayTests.m; sourceTree = "<group>"; };
+		068F145619FBC86A008D53B4 /* RequestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestVC.h; sourceTree = "<group>"; };
+		068F145719FBC86A008D53B4 /* RequestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestVC.m; sourceTree = "<group>"; };
+		068F146919FBCB4A008D53B4 /* SearchAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAddressVC.h; sourceTree = "<group>"; };
+		068F146A19FBCB4A008D53B4 /* SearchAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAddressVC.m; sourceTree = "<group>"; };
+		068F147119FBD731008D53B4 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
+		068F147219FBD731008D53B4 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
+		068F147419FBD7A0008D53B4 /* TaxiFriday-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxiFriday-PrefixHeader.pch"; sourceTree = "<group>"; };
+		068F147519FBDE0F008D53B4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		068F147819FBDE48008D53B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		068F147A19FBDE60008D53B4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		068F147C19FBDE94008D53B4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		068F147E19FBE08E008D53B4 /* HELVETICANEUECYR-BOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-BOLD.OTF"; path = "Fonts/HELVETICANEUECYR-BOLD.OTF"; sourceTree = "<group>"; };
+		068F147F19FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-LIGHT.OTF"; path = "Fonts/HELVETICANEUECYR-LIGHT.OTF"; sourceTree = "<group>"; };
+		068F148019FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-MEDIUM.OTF"; path = "Fonts/HELVETICANEUECYR-MEDIUM.OTF"; sourceTree = "<group>"; };
+		068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-ROMAN.OTF"; path = "Fonts/HELVETICANEUECYR-ROMAN.OTF"; sourceTree = "<group>"; };
+		562CE38CAC471FAFB5480BC4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AA8E397A28ABA8EDAB4BED70 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C0F7CBFAE11CD09338AADED3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +83,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				068F147D19FBDE94008D53B4 /* CoreGraphics.framework in Frameworks */,
+				068F147B19FBDE60008D53B4 /* QuartzCore.framework in Frameworks */,
+				068F147919FBDE48008D53B4 /* Foundation.framework in Frameworks */,
+				068F147619FBDE0F008D53B4 /* UIKit.framework in Frameworks */,
+				D88C7B14D386BF24E318DFAD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +101,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06643A8819FC237100431C48 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				06643A8919FC238F00431C48 /* Server.h */,
+				06643A8A19FC238F00431C48 /* Server.m */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		06643A8F19FC592B00431C48 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				06643A8C19FC591F00431C48 /* AddressCell.h */,
+				06643A8D19FC591F00431C48 /* AddressCell.m */,
+				06643A9019FCD7AB00431C48 /* SearchCell.h */,
+				06643A9119FCD7AB00431C48 /* SearchCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		068F142219FBC70F008D53B4 = {
 			isa = PBXGroup;
 			children = (
 				068F142D19FBC710008D53B4 /* TaxiFriday */,
+				068F147719FBDE1E008D53B4 /* Frameworks */,
 				068F144719FBC710008D53B4 /* TaxiFridayTests */,
 				068F142C19FBC710008D53B4 /* Products */,
+				59FD8BC2423C9B37DA1E9E5B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,11 +144,10 @@
 		068F142D19FBC710008D53B4 /* TaxiFriday */ = {
 			isa = PBXGroup;
 			children = (
-				068F143219FBC710008D53B4 /* AppDelegate.h */,
-				068F143319FBC710008D53B4 /* AppDelegate.m */,
-				068F143519FBC710008D53B4 /* ViewController.h */,
-				068F143619FBC710008D53B4 /* ViewController.m */,
-				068F143819FBC710008D53B4 /* Main.storyboard */,
+				068F145419FBC7D1008D53B4 /* AppDelegate */,
+				068F145519FBC7EE008D53B4 /* Storyboard */,
+				068F145919FBC878008D53B4 /* VCs */,
+				06643A8819FC237100431C48 /* Server */,
 				068F143B19FBC710008D53B4 /* Images.xcassets */,
 				068F143D19FBC710008D53B4 /* LaunchScreen.xib */,
 				068F142E19FBC710008D53B4 /* Supporting Files */,
@@ -96,8 +158,12 @@
 		068F142E19FBC710008D53B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				068F147119FBD731008D53B4 /* Categories.h */,
+				068F148619FBE09B008D53B4 /* Fonts */,
+				068F147219FBD731008D53B4 /* Categories.m */,
 				068F142F19FBC710008D53B4 /* Info.plist */,
 				068F143019FBC710008D53B4 /* main.m */,
+				068F147419FBD7A0008D53B4 /* TaxiFriday-PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -119,6 +185,83 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		068F145419FBC7D1008D53B4 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				068F143219FBC710008D53B4 /* AppDelegate.h */,
+				068F143319FBC710008D53B4 /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		068F145519FBC7EE008D53B4 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				068F143819FBC710008D53B4 /* Main-iPhone.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		068F145919FBC878008D53B4 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				068F145A19FBC8B9008D53B4 /* RequestVC */,
+				068F146C19FBCB4F008D53B4 /* SearchAdressVC */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
+		068F145A19FBC8B9008D53B4 /* RequestVC */ = {
+			isa = PBXGroup;
+			children = (
+				068F145619FBC86A008D53B4 /* RequestVC.h */,
+				068F145719FBC86A008D53B4 /* RequestVC.m */,
+			);
+			name = RequestVC;
+			sourceTree = "<group>";
+		};
+		068F146C19FBCB4F008D53B4 /* SearchAdressVC */ = {
+			isa = PBXGroup;
+			children = (
+				06643A8F19FC592B00431C48 /* Cells */,
+				068F146919FBCB4A008D53B4 /* SearchAddressVC.h */,
+				068F146A19FBCB4A008D53B4 /* SearchAddressVC.m */,
+			);
+			name = SearchAdressVC;
+			sourceTree = "<group>";
+		};
+		068F147719FBDE1E008D53B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				068F147C19FBDE94008D53B4 /* CoreGraphics.framework */,
+				068F147A19FBDE60008D53B4 /* QuartzCore.framework */,
+				068F147819FBDE48008D53B4 /* Foundation.framework */,
+				068F147519FBDE0F008D53B4 /* UIKit.framework */,
+				C0F7CBFAE11CD09338AADED3 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		068F148619FBE09B008D53B4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				068F147E19FBE08E008D53B4 /* HELVETICANEUECYR-BOLD.OTF */,
+				068F147F19FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF */,
+				068F148019FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF */,
+				068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		59FD8BC2423C9B37DA1E9E5B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA8E397A28ABA8EDAB4BED70 /* Pods.debug.xcconfig */,
+				562CE38CAC471FAFB5480BC4 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +269,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 068F144E19FBC710008D53B4 /* Build configuration list for PBXNativeTarget "TaxiFriday" */;
 			buildPhases = (
+				AEB95E2B5C9F173EBC6C87F4 /* Check Pods Manifest.lock */,
 				068F142719FBC70F008D53B4 /* Sources */,
 				068F142819FBC70F008D53B4 /* Frameworks */,
 				068F142919FBC70F008D53B4 /* Resources */,
+				960FC7540AFBB607A3B668A3 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,8 +343,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				068F143A19FBC710008D53B4 /* Main.storyboard in Resources */,
+				068F148319FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF in Resources */,
+				068F143A19FBC710008D53B4 /* Main-iPhone.storyboard in Resources */,
+				068F148519FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF in Resources */,
 				068F143F19FBC710008D53B4 /* LaunchScreen.xib in Resources */,
+				068F148219FBE08E008D53B4 /* HELVETICANEUECYR-BOLD.OTF in Resources */,
+				068F148419FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF in Resources */,
 				068F143C19FBC710008D53B4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,13 +362,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		960FC7540AFBB607A3B668A3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AEB95E2B5C9F173EBC6C87F4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		068F142719FBC70F008D53B4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				068F143719FBC710008D53B4 /* ViewController.m in Sources */,
+				068F145819FBC86A008D53B4 /* RequestVC.m in Sources */,
+				068F146B19FBCB4A008D53B4 /* SearchAddressVC.m in Sources */,
+				068F147319FBD731008D53B4 /* Categories.m in Sources */,
 				068F143419FBC710008D53B4 /* AppDelegate.m in Sources */,
+				06643A8B19FC238F00431C48 /* Server.m in Sources */,
+				06643A9219FCD7AB00431C48 /* SearchCell.m in Sources */,
+				06643A8E19FC591F00431C48 /* AddressCell.m in Sources */,
 				068F143119FBC710008D53B4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,12 +430,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		068F143819FBC710008D53B4 /* Main.storyboard */ = {
+		068F143819FBC710008D53B4 /* Main-iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				068F143919FBC710008D53B4 /* Base */,
 			);
-			name = Main.storyboard;
+			name = "Main-iPhone.storyboard";
 			sourceTree = "<group>";
 		};
 		068F143D19FBC710008D53B4 /* LaunchScreen.xib */ = {
@@ -340,8 +527,10 @@
 		};
 		068F144F19FBC710008D53B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA8E397A28ABA8EDAB4BED70 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "TaxiFriday/TaxiFriday-PrefixHeader.pch";
 				INFOPLIST_FILE = TaxiFriday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,8 +539,10 @@
 		};
 		068F145019FBC710008D53B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 562CE38CAC471FAFB5480BC4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "TaxiFriday/TaxiFriday-PrefixHeader.pch";
 				INFOPLIST_FILE = TaxiFriday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +602,7 @@
 				068F145019FBC710008D53B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		068F145119FBC710008D53B4 /* Build configuration list for PBXNativeTarget "TaxiFridayTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +611,7 @@
 				068F145319FBC710008D53B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
