@@ -29,10 +29,25 @@ NSString *const ServerAddress = @"http://taxi5.by";
                      success:(void (^)(NSDictionary *))success
                      failure:(void (^)(NSError *))failure
 {
-    //NSString *urlRequest = [NSString stringWithFormat:@"/api/locator/search?q=%@", text];
     NSDictionary *parameters = @{@"q" : text};
     
     [self GET:@"/api/locator/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
+        success(JSON);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)sendOrderRequestWithParameters:(NSDictionary *)parameters
+                     success:(void (^)(NSDictionary *))success
+                     failure:(void (^)(NSError *))failure
+{
+    NSDictionary *location = @{@"id" : parameters[@"addressID"], @"street" : parameters[@"street"], @"city" : parameters[@"city"], @"code" : parameters[@"code"], @"type" : @"address", @"building" : parameters[@"building"]};
+    NSArray *routeArray = @[@{@"name" : parameters[@"street"], @"type" : @"address", @"location" : location}, @{@"location" : @{}}];
+    NSDictionary *clientDictionary = @{@"phone" : parameters[@"phone"], @"name" : parameters[@"name"]};
+    NSDictionary *requestParameters = @{@"route" : routeArray, @"client" : clientDictionary, @"owner" : @"client"};
+    
+    [self POST:@"/api/order" parameters:requestParameters success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
         success(JSON);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);

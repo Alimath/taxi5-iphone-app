@@ -27,6 +27,7 @@
 		068F148319FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F147F19FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF */; };
 		068F148419FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F148019FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF */; };
 		068F148519FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */; };
+		06DE565719FD400F00E7026E /* OrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DE565619FD400F00E7026E /* OrderVC.m */; };
 		D88C7B14D386BF24E318DFAD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F7CBFAE11CD09338AADED3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,8 @@
 		068F147F19FBE08E008D53B4 /* HELVETICANEUECYR-LIGHT.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-LIGHT.OTF"; path = "Fonts/HELVETICANEUECYR-LIGHT.OTF"; sourceTree = "<group>"; };
 		068F148019FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-MEDIUM.OTF"; path = "Fonts/HELVETICANEUECYR-MEDIUM.OTF"; sourceTree = "<group>"; };
 		068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = "HELVETICANEUECYR-ROMAN.OTF"; path = "Fonts/HELVETICANEUECYR-ROMAN.OTF"; sourceTree = "<group>"; };
+		06DE565519FD400F00E7026E /* OrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderVC.h; sourceTree = "<group>"; };
+		06DE565619FD400F00E7026E /* OrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderVC.m; sourceTree = "<group>"; };
 		562CE38CAC471FAFB5480BC4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AA8E397A28ABA8EDAB4BED70 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F7CBFAE11CD09338AADED3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +210,7 @@
 			children = (
 				068F145A19FBC8B9008D53B4 /* RequestVC */,
 				068F146C19FBCB4F008D53B4 /* SearchAdressVC */,
+				06DE565819FD401800E7026E /* OrderVC */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -251,6 +255,15 @@
 				068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		06DE565819FD401800E7026E /* OrderVC */ = {
+			isa = PBXGroup;
+			children = (
+				06DE565519FD400F00E7026E /* OrderVC.h */,
+				06DE565619FD400F00E7026E /* OrderVC.m */,
+			);
+			name = OrderVC;
 			sourceTree = "<group>";
 		};
 		59FD8BC2423C9B37DA1E9E5B /* Pods */ = {
@@ -405,6 +418,7 @@
 				068F147319FBD731008D53B4 /* Categories.m in Sources */,
 				068F143419FBC710008D53B4 /* AppDelegate.m in Sources */,
 				06643A8B19FC238F00431C48 /* Server.m in Sources */,
+				06DE565719FD400F00E7026E /* OrderVC.m in Sources */,
 				06643A9219FCD7AB00431C48 /* SearchCell.m in Sources */,
 				06643A8E19FC591F00431C48 /* AddressCell.m in Sources */,
 				068F143119FBC710008D53B4 /* main.m in Sources */,

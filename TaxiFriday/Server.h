@@ -12,9 +12,14 @@
 @interface Server : AFHTTPRequestOperationManager
 
 + (Server *)sharedServer;
+
 // Addresses
 - (void)getAddressesWithText:(NSString *)text
                      success:(void (^)(NSDictionary *))success
                      failure:(void (^)(NSError *))failure;
+// Order
+- (void)sendOrderRequestWithParameters:(NSDictionary *)parameters
+                               success:(void (^)(NSDictionary *))success
+                               failure:(void (^)(NSError *))failure;
 
 @end

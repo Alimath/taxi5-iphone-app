@@ -29,6 +29,7 @@
     
     // Table view.
     CGRect tableViewFrame = self.view.bounds;
+    tableViewFrame.size.height -= 44;
     tableViewFrame.origin.y = 50.0;
     
     self.tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:UITableViewStylePlain];
@@ -65,10 +66,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AddressCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AddressCell class])];
+    cell.streetLabel.text = @"";
+    cell.infoLabel.text = @"";
+    cell.textLabel.text = @"";
     if ([self.searchResults count]) {
         NSDictionary *location = self.searchResults[indexPath.row];
-        cell.streetLabel.text = location[@"street"];
-        cell.infoLabel.text = location[@"building"];
+        if ([location[@"name"] length]) {
+            cell.streetLabel.text = location[@"name"];
+            cell.infoLabel.text = location[@"street"];
+        } else {
+            cell.textLabel.text = location[@"street"];
+        }
     }
     return cell;
 }
@@ -101,15 +109,37 @@
                     NSMutableDictionary *location = [NSMutableDictionary new];;
                     NSString *street = address[@"street"];
                     NSString *building = address[@"building"];
+                    NSString *name = address[@"name"];
                     NSString *city = address[@"city"];
+                    NSNumber *addressID = address[@"id"];
+                    NSString *code = address[@"code"];
                     if ([street length]) {
                         [location setObject:street forKey:@"street"];
+                    } else {
+                        [location setObject:@"" forKey:@"street"];
                     }
                     if ([building length]) {
                         [location setObject:building forKey:@"building"];
+                    } else {
+                        [location setObject:@"" forKey:@"building"];
+                    }
+                    if ([name length]) {
+                        [location setObject:name forKey:@"name"];
+                    } else {
+                        [location setObject:@"" forKey:@"name"];
                     }
                     if ([city length]) {
                         [location setObject:city forKey:@"city"];
+                    } else {
+                        [location setObject:@"" forKey:@"city"];
+                    }
+                    if (addressID) {
+                        [location setObject:addressID forKey:@"addressID"];
+                    }
+                    if ([code length]) {
+                        [location setObject:code forKey:@"code"];
+                    } else {
+                        [location setObject:@"" forKey:@"code"];
                     }
                     [self.searchResults addObject:location];
                 }
