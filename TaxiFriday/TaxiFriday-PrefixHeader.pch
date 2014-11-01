@@ -17,4 +17,7 @@
     #import <Foundation/Foundation.h>
     #import "Categories.h"
     #import "Server.h"
+    #define SERVER [Server sharedServer]
+    #import "MBProgressHUD.h"
+    #import "Place.h"
 #endif

@@ -10,9 +10,5 @@
 
 @interface AddressCell : UITableViewCell
 
-@property UILabel *streetLabel;
-@property UILabel *infoLabel;
-
-+ (CGFloat)height;
 
 @end

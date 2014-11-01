@@ -24,8 +24,6 @@
     self.backgroundColor = [UIColor whiteColor];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.backgroundColor = [UIColor grayColor];
-    
-
 }
 
 + (CGFloat)height

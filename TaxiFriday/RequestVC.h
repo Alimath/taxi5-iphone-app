@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RequestVC : UITableViewController
+@protocol RequestVCDelegate <NSObject>
+
+- (void)updateWithPlace:(Place*)place;
+
+@end
+
+@interface RequestVC : UITableViewController <RequestVCDelegate>
+
+- (void)updateWithPlace:(Place *)place;
 
 @end

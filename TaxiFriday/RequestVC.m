@@ -8,6 +8,7 @@
 
 #import "RequestVC.h"
 #import "SearchAddressVC.h"
+#import "SearchPlaceVC.h"
 
 #define RESPONSE_ALERT_TAG 1
 
@@ -31,6 +32,7 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
 @property UIToolbar *numberToolbar;
 @property UITextField *textField;
 @property NSMutableDictionary *addressParameters;
+@property Place *place;
 
 @end
 
@@ -71,7 +73,7 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
         }
     } else if (indexPath.section == RequestVCSectionTypeAddress) {
         if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2) {
-            SearchAddressVC *destinationVC = [SearchAddressVC storyboardVC];
+            SearchPlaceVC *destinationVC = [SearchPlaceVC storyboardVC];
             destinationVC.delegate = self;
             [self.navigationController pushViewController:destinationVC animated:YES];
         }
@@ -172,7 +174,6 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     }
 }
 
-
 - (void)clearInputFields
 {
     self.nameTextField.text = @"";
@@ -181,4 +182,17 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     [self.addressParameters removeAllObjects];
     [self.tableView reloadData];
 }
+
+#pragma mark - RequestVCDelegate
+
+- (void)updateWithPlace:(Place *)place
+{
+    _streetLabel.text = place.street;
+    if (place.building)
+    {
+        _houseLabel.text = place.building;
+    }
+    _place = place;
+}
+
 @end

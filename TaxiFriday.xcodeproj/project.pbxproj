@@ -17,7 +17,6 @@
 		068F143F19FBC710008D53B4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 068F143D19FBC710008D53B4 /* LaunchScreen.xib */; };
 		068F144B19FBC710008D53B4 /* TaxiFridayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F144A19FBC710008D53B4 /* TaxiFridayTests.m */; };
 		068F145819FBC86A008D53B4 /* RequestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F145719FBC86A008D53B4 /* RequestVC.m */; };
-		068F146B19FBCB4A008D53B4 /* SearchAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F146A19FBCB4A008D53B4 /* SearchAddressVC.m */; };
 		068F147319FBD731008D53B4 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F147219FBD731008D53B4 /* Categories.m */; };
 		068F147619FBDE0F008D53B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F147519FBDE0F008D53B4 /* UIKit.framework */; };
 		068F147919FBDE48008D53B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 068F147819FBDE48008D53B4 /* Foundation.framework */; };
@@ -28,6 +27,8 @@
 		068F148419FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F148019FBE08E008D53B4 /* HELVETICANEUECYR-MEDIUM.OTF */; };
 		068F148519FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF in Resources */ = {isa = PBXBuildFile; fileRef = 068F148119FBE08E008D53B4 /* HELVETICANEUECYR-ROMAN.OTF */; };
 		06DE565719FD400F00E7026E /* OrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 06DE565619FD400F00E7026E /* OrderVC.m */; };
+		A7CCCDAC1A04D9C700F5DF4D /* SearchPlaceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CCCDAB1A04D9C700F5DF4D /* SearchPlaceVC.m */; };
+		A7CCCDB31A04DC1600F5DF4D /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = A7CCCDB21A04DC1600F5DF4D /* Place.m */; };
 		D88C7B14D386BF24E318DFAD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F7CBFAE11CD09338AADED3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +62,6 @@
 		068F144A19FBC710008D53B4 /* TaxiFridayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaxiFridayTests.m; sourceTree = "<group>"; };
 		068F145619FBC86A008D53B4 /* RequestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestVC.h; sourceTree = "<group>"; };
 		068F145719FBC86A008D53B4 /* RequestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestVC.m; sourceTree = "<group>"; };
-		068F146919FBCB4A008D53B4 /* SearchAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAddressVC.h; sourceTree = "<group>"; };
-		068F146A19FBCB4A008D53B4 /* SearchAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAddressVC.m; sourceTree = "<group>"; };
 		068F147119FBD731008D53B4 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
 		068F147219FBD731008D53B4 /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
 		068F147419FBD7A0008D53B4 /* TaxiFriday-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaxiFriday-PrefixHeader.pch"; sourceTree = "<group>"; };
@@ -77,6 +76,10 @@
 		06DE565519FD400F00E7026E /* OrderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderVC.h; sourceTree = "<group>"; };
 		06DE565619FD400F00E7026E /* OrderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderVC.m; sourceTree = "<group>"; };
 		562CE38CAC471FAFB5480BC4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A7CCCDAA1A04D9C700F5DF4D /* SearchPlaceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchPlaceVC.h; sourceTree = "<group>"; };
+		A7CCCDAB1A04D9C700F5DF4D /* SearchPlaceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchPlaceVC.m; sourceTree = "<group>"; };
+		A7CCCDB11A04DC1600F5DF4D /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		A7CCCDB21A04DC1600F5DF4D /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
 		AA8E397A28ABA8EDAB4BED70 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C0F7CBFAE11CD09338AADED3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +153,7 @@
 				068F145419FBC7D1008D53B4 /* AppDelegate */,
 				068F145519FBC7EE008D53B4 /* Storyboard */,
 				068F145919FBC878008D53B4 /* VCs */,
+				A7CCCDAD1A04DA8100F5DF4D /* Model */,
 				06643A8819FC237100431C48 /* Server */,
 				068F143B19FBC710008D53B4 /* Images.xcassets */,
 				068F143D19FBC710008D53B4 /* LaunchScreen.xib */,
@@ -228,8 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				06643A8F19FC592B00431C48 /* Cells */,
-				068F146919FBCB4A008D53B4 /* SearchAddressVC.h */,
-				068F146A19FBCB4A008D53B4 /* SearchAddressVC.m */,
+				A7CCCDAA1A04D9C700F5DF4D /* SearchPlaceVC.h */,
+				A7CCCDAB1A04D9C700F5DF4D /* SearchPlaceVC.m */,
 			);
 			name = SearchAdressVC;
 			sourceTree = "<group>";
@@ -273,6 +277,15 @@
 				562CE38CAC471FAFB5480BC4 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A7CCCDAD1A04DA8100F5DF4D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7CCCDB11A04DC1600F5DF4D /* Place.h */,
+				A7CCCDB21A04DC1600F5DF4D /* Place.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,9 +427,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				068F145819FBC86A008D53B4 /* RequestVC.m in Sources */,
-				068F146B19FBCB4A008D53B4 /* SearchAddressVC.m in Sources */,
+				A7CCCDB31A04DC1600F5DF4D /* Place.m in Sources */,
 				068F147319FBD731008D53B4 /* Categories.m in Sources */,
 				068F143419FBC710008D53B4 /* AppDelegate.m in Sources */,
+				A7CCCDAC1A04D9C700F5DF4D /* SearchPlaceVC.m in Sources */,
 				06643A8B19FC238F00431C48 /* Server.m in Sources */,
 				06DE565719FD400F00E7026E /* OrderVC.m in Sources */,
 				06643A9219FCD7AB00431C48 /* SearchCell.m in Sources */,
