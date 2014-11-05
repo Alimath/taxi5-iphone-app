@@ -250,4 +250,15 @@
     return coloredImg;
 }
 
+
+@end
+
+//
+@implementation UITableViewCell (SeparatorInset)
+
+- (UIEdgeInsets)layoutMargins
+{
+    return UIEdgeInsetsZero;
+}
+
 @end

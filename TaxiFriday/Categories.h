@@ -54,6 +54,12 @@
 
 @end
 
+@interface UITableViewCell (SeparatorInset)
+
+- (UIEdgeInsets)layoutMargins;
+
+@end
+
 @interface UINavigationItem (Additions)
 
 - (void)addLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem;

@@ -19,6 +19,7 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
 @property (nonatomic, strong) NSMutableArray *searchResults; // Filtered search results
 @property MBProgressHUD *progress;
 @property UIActivityIndicatorView *spinner;
+@property NSInteger requestsCountQueue;
 
 @end
 
@@ -29,6 +30,8 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _requestsCountQueue = 0;
     
     // Create a mutable array to contain products for the search results table.
     
@@ -122,8 +125,18 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
         address = [address stringByAppendingString:@" "];
         address = [address stringByAppendingString:place.building];
     }
-    cell.textLabel.text = address;
-    cell.detailTextLabel.text = place.name;
+    
+    if (place.name)
+    {
+        cell.textLabel.text = place.name;
+        cell.detailTextLabel.text = address;
+    }
+    else
+    {
+        cell.textLabel.text = address;
+        cell.detailTextLabel.text = place.name;
+    }
+    
     return cell;
 }
 
@@ -133,7 +146,6 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
     if (tableView == ((UITableViewController *)self.searchController.searchResultsController).tableView)
     {
          place = self.searchResults[indexPath.row];
-        
     }
     else
     {
@@ -156,12 +168,19 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
 
     _spinner.hidden = NO;
     [_spinner startAnimating];
+    _requestsCountQueue += 1;
     [SERVER getAddressesWithText:searchString success:^(NSDictionary *result)
     {
-        self.searchResults = [[Place objectsWithArray:(NSArray*)result] mutableCopy];
-        [((UITableViewController *)self.searchController.searchResultsController).tableView reloadData];
-        [_spinner stopAnimating];
-        _spinner.hidden = YES;
+        _requestsCountQueue -= 1;
+        
+        if (!_requestsCountQueue)
+        {
+            self.searchResults = [[Place objectsWithArray:(NSArray*)result] mutableCopy];
+            [((UITableViewController *)self.searchController.searchResultsController).tableView reloadData];
+            [_spinner stopAnimating];
+            _spinner.hidden = YES;
+        }
+        
     }
     failure:^(NSError *error)
     {

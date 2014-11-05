@@ -21,6 +21,13 @@
 - (void)sendOrderRequestWithParameters:(NSDictionary *)parameters
                                success:(void (^)(NSDictionary *))success
                                failure:(void (^)(NSError *))failure;
-
+// Status
+- (void)getStatusRequestWithParameters:(NSDictionary *)parameters
+                               success:(void (^)(NSDictionary *))success
+                               failure:(void (^)(NSError *))failure;
+// Approve
+- (void)approveRequestWithParameters:(NSDictionary *)parameters
+                               success:(void (^)(NSDictionary *))success
+                               failure:(void (^)(NSError *))failure;
 
 @end
