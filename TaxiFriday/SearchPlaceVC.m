@@ -126,15 +126,39 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
         address = [address stringByAppendingString:place.building];
     }
     
-    if (place.name)
+    if (!place.name)
     {
-        cell.textLabel.text = place.name;
-        cell.detailTextLabel.text = address;
+        place.name = @"";
+    }
+    
+    NSMutableAttributedString *attributedAddress = [[NSMutableAttributedString alloc] initWithString:address];
+    NSMutableAttributedString *attributedName = [[NSMutableAttributedString alloc] initWithString:place.name];
+    
+    if (place.name.length)
+    {
+        [attributedAddress addAttribute:NSFontAttributeName
+                                  value:[UIFont boldSystemFontOfSize:13.0]
+                                  range:[address rangeOfString:[self.searchController.searchBar text] options:NSCaseInsensitiveSearch]];
+        [attributedName addAttribute:NSFontAttributeName
+                               value:[UIFont boldSystemFontOfSize:17.0]
+                               range:[place.name rangeOfString:[self.searchController.searchBar text] options:NSCaseInsensitiveSearch]];
+        
+        cell.textLabel.attributedText = attributedName;
+        cell.detailTextLabel.attributedText = attributedAddress;
+        cell.imageView.image = [UIImage imageNamed:@"place"];
     }
     else
     {
-        cell.textLabel.text = address;
-        cell.detailTextLabel.text = place.name;
+        [attributedAddress addAttribute:NSFontAttributeName
+                                  value:[UIFont boldSystemFontOfSize:17.0]
+                                  range:[address rangeOfString:[self.searchController.searchBar text] options:NSCaseInsensitiveSearch]];
+        [attributedName addAttribute:NSFontAttributeName
+                               value:[UIFont boldSystemFontOfSize:13.0]
+                               range:[place.name rangeOfString:[self.searchController.searchBar text] options:NSCaseInsensitiveSearch]];
+        
+        cell.textLabel.attributedText = attributedAddress;
+        cell.detailTextLabel.attributedText = attributedName;
+        cell.imageView.image = nil;
     }
     
     return cell;
@@ -180,7 +204,6 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
             [_spinner stopAnimating];
             _spinner.hidden = YES;
         }
-        
     }
     failure:^(NSError *error)
     {

@@ -9,12 +9,13 @@
         <scene sceneID="ecZ-CJ-1Jc">
             <objects>
                 <tableViewController id="1bG-BD-9O7" customClass="RequestVC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8pa-RU-9db">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="8pa-RU-9db">
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
-                            <tableViewSection headerTitle="   Информация о заказчике" id="g8v-Tj-Ajh">
+                            <tableViewSection headerTitle="    Информация о заказчике" id="g8v-Tj-Ajh">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="sdO-Di-wjT">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -22,7 +23,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Имя" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcL-cN-JWK">
-                                                    <rect key="frame" x="15" y="10" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="34" id="9EK-rB-z3h"/>
                                                         <constraint firstAttribute="height" constant="21" id="F5r-b7-ig5"/>
@@ -32,20 +33,20 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите имя" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IyH-0f-G7s">
-                                                    <rect key="frame" x="60" y="0.0" width="242" height="41"/>
+                                                    <rect key="frame" x="60" y="1" width="252" height="41"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="LIi-wN-xKg"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="jcL-cN-JWK" secondAttribute="bottom" constant="4" id="4vF-6s-aFk"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="IyH-0f-G7s" secondAttribute="trailing" constant="10" id="KQq-mF-QVc"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jcL-cN-JWK" secondAttribute="bottom" constant="3" id="4vF-6s-aFk"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IyH-0f-G7s" secondAttribute="trailing" id="KQq-mF-QVc"/>
                                                 <constraint firstItem="IyH-0f-G7s" firstAttribute="leading" secondItem="jcL-cN-JWK" secondAttribute="trailing" constant="11" id="N6R-f5-yym"/>
                                                 <constraint firstItem="IyH-0f-G7s" firstAttribute="leading" secondItem="jcL-cN-JWK" secondAttribute="trailing" constant="11" id="NdH-7r-wbE"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="IyH-0f-G7s" secondAttribute="bottom" constant="-6" id="j3f-H5-X2H"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="IyH-0f-G7s" secondAttribute="bottom" constant="-7" id="j3f-H5-X2H"/>
                                                 <constraint firstItem="jcL-cN-JWK" firstAttribute="leading" secondItem="INi-33-WIb" secondAttribute="leadingMargin" constant="7" id="jlX-9s-gvd"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -66,26 +67,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите телефон" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wb2-Ts-xoF">
-                                                    <rect key="frame" x="163" y="0.0" width="139" height="41"/>
+                                                    <rect key="frame" x="158" y="1" width="154" height="41"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="vik-ij-Oul"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wb2-Ts-xoF" secondAttribute="trailing" constant="10" id="0Vb-VR-Phv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wb2-Ts-xoF" secondAttribute="trailing" id="0Vb-VR-Phv"/>
                                                 <constraint firstItem="h2D-gO-ZDN" firstAttribute="leading" secondItem="OFn-Ad-oRI" secondAttribute="leadingMargin" constant="7" id="AxG-uW-tzS"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="h2D-gO-ZDN" secondAttribute="bottom" constant="4" id="JcE-hW-w1P"/>
-                                                <constraint firstItem="wb2-Ts-xoF" firstAttribute="leading" secondItem="h2D-gO-ZDN" secondAttribute="trailing" constant="11" id="k5K-TS-Ya2"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wb2-Ts-xoF" secondAttribute="bottom" constant="-6" id="kU7-NG-fok"/>
+                                                <constraint firstItem="wb2-Ts-xoF" firstAttribute="leading" secondItem="h2D-gO-ZDN" secondAttribute="trailing" constant="6" id="k5K-TS-Ya2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wb2-Ts-xoF" secondAttribute="bottom" constant="-7" id="kU7-NG-fok"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="   Где вы находитесь?" id="bZF-My-Vgr">
+                            <tableViewSection headerTitle="    Где вы находитесь?" id="bZF-My-Vgr">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="GJv-dx-bG0">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -143,7 +144,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="ZWM-HA-G4G"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
@@ -177,7 +178,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="PxY-Xi-0Ji"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                             </subviews>
@@ -189,7 +190,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="B3W-va-kJI" secondAttribute="bottom" constant="3" id="ibm-Ff-ZqW"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="18" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -203,10 +203,12 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fCI-m5-XNo" customClass="UITextViewModified">
                                                     <rect key="frame" x="10" y="10" width="300" height="130"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fCI-m5-XNo" secondAttribute="bottom" constant="1" id="Hv2-bu-NA4"/>
                                                 <constraint firstItem="fCI-m5-XNo" firstAttribute="top" secondItem="Be9-Iu-C23" secondAttribute="topMargin" constant="2" id="LgH-Vh-1PY"/>
@@ -214,7 +216,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="fCI-m5-XNo" secondAttribute="trailing" constant="2" id="aTP-yp-VD3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -231,10 +233,11 @@
                                                         <constraint firstAttribute="height" constant="21" id="2Hq-ZL-T4s"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.90588235289999997" green="0.25882352939999997" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.90588235289999997" green="0.25882352939999997" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="7rk-mk-PgH" secondAttribute="trailing" constant="110" id="JR4-Cb-Qr2"/>
                                                 <constraint firstAttribute="bottom" secondItem="7rk-mk-PgH" secondAttribute="bottom" constant="11" id="iFx-hs-pjZ"/>
@@ -253,10 +256,11 @@
                                                         <constraint firstAttribute="height" constant="21" id="ojW-80-TeW"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="1aY-Mm-9zp" secondAttribute="bottom" constant="4" id="PDW-Od-3fK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="1aY-Mm-9zp" secondAttribute="trailing" constant="75" id="gJc-nU-Nqq"/>
@@ -287,7 +291,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8vH-8g-BCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1993" y="256"/>
+            <point key="canvasLocation" x="1993" y="253"/>
         </scene>
         <!--Статус заказа-->
         <scene sceneID="z1T-ry-gxX">

@@ -58,6 +58,10 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     
     self.nameTextField.delegate = self;
     self.phoneTextField.delegate = self;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"phone"])
+    {
+        _phoneTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"phone"];
+    }
     self.phoneTextField.inputAccessoryView = self.numberToolbar;
     self.houseTextField.inputAccessoryView = self.numberToolbar;
     self.stairTextField.inputAccessoryView = self.numberToolbar;
@@ -70,9 +74,39 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     self.addressParameters = [NSMutableDictionary new];
     
     self.tableView.tableFooterView = [UIView new];
+    
+    //To make the border look very close to a UITextField
+    [_commentTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [_commentTextView.layer setBorderWidth:1.0];
+    
+    //The rounded corner part, where you specify your view's corner radius:
+    _commentTextView.layer.cornerRadius = 5;
+    _commentTextView.clipsToBounds = YES;
 }
 
 #pragma mark - Table view delegate
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    
+//    return 50;
+//
+//}
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
+//    label.backgroundColor = [UIColor greenColor];
+//    if (section == 0)
+//    {
+//        label.text = @"Информация о заказчике";
+//    }
+//    if (section == 1)
+//    {
+//        label.text = @"Где вы находитесь?";
+//    }
+//    return label;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -139,9 +173,24 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
 {
     if (textField == _phoneTextField)
     {
-        if (textField.text.length + string.length > 15)
+        if (textField.text.length + string.length > 17)
         {
             return NO;
+        }
+        else
+        {
+            if (range.location == 4 && string.length)
+            {
+                textField.text = [textField.text stringByAppendingString:@"("];
+            }
+            if (range.location == 7 && string.length)
+            {
+                textField.text = [textField.text stringByAppendingString:@")"];
+            }
+            if ((range.location ==11 || range.location == 14) && string.length)
+            {
+                textField.text = [textField.text stringByAppendingString:@"-"];
+            }
         }
         
         if (textField.text.length == 4 && [string isEqualToString:@""])
@@ -208,8 +257,15 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
         [errorAlert show];
         return;
     }
-    if (![phone length]) {
+    if (![phone length])
+    {
         errorAlert.message = @"Введите телефон";
+        [errorAlert show];
+        return;
+    }
+    if ([phone length] < 17)
+    {
+        errorAlert.message = @"Телефон слишком короткий";
         [errorAlert show];
         return;
     }
@@ -218,6 +274,15 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
         [errorAlert show];
         return;
     }
+    if (![building length])
+    {
+        errorAlert.message = @"Введите номер дома";
+        [errorAlert show];
+        return;
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:phone forKey:@"phone"];
+    
     NSDictionary *parameters = @{@"addressID" : addressID, @"street" : street, @"city" : city, @"code" : code, @"building" : building, @"name" : name, @"phone" : phone};
     
     _progress = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
