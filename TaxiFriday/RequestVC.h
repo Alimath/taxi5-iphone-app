@@ -11,11 +11,13 @@
 @protocol RequestVCDelegate <NSObject>
 
 - (void)updateWithPlace:(Place*)place;
+- (void)setActiveHouseTextfield;
 
 @end
 
-@interface RequestVC : UITableViewController <RequestVCDelegate>
+@interface RequestVC : UIViewController <RequestVCDelegate>
 
 - (void)updateWithPlace:(Place *)place;
+- (void)setActiveHouseTextfield;
 
 @end

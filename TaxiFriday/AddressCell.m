@@ -1,8 +1,8 @@
 //
-//  AddressCell.m
+//  AdressCell.m
 //  TaxiFriday
 //
-//  Created by Stasevich Yauhen on 10/25/14.
+//  Created by Valik Kuchinsky on 23.11.14.
 //
 //
 
@@ -10,15 +10,14 @@
 
 @implementation AddressCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
-    if (self)
-    {
-        
-    }
-    return self;
+- (void)awakeFromNib {
+    // Initialization code
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
 
 @end

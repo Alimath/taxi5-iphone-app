@@ -11,31 +11,39 @@
 #import "SearchPlaceVC.h"
 #import "UITextViewModified.h"
 #import "OrderVC.h"
+#import "ScrollViewCustom.h"
+#import "UIViewRounded.h"
+#import "InfoVC.h"
+#import "StatusBaseVC.h"
 
 #define RESPONSE_ALERT_TAG 1
 
 typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     RequestVCSectionTypeClientInfo,
     RequestVCSectionTypeAddress,
-    RequestVCSectionTypeComment,
     RequestVCSectionTypeAction,
     RequestVCSectionTypesCount
 };
 
-@interface RequestVC () <UIAlertViewDelegate, UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource, UITableViewDelegate, SearchAddressVCDelegate>
+@interface RequestVC () <UIAlertViewDelegate, UITextFieldDelegate, UITextViewDelegate, SearchAddressVCDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet UILabel *streetLabel;
+@property (weak, nonatomic) IBOutlet UIViewRounded *streetView;
 @property (weak, nonatomic) IBOutlet UITextField *houseTextField;
 @property (weak, nonatomic) IBOutlet UITextField *stairTextField;
-@property (weak, nonatomic) IBOutlet UITextViewModified *commentTextView;
+@property (weak, nonatomic) IBOutlet UITextField *housingTextField;
+@property (weak, nonatomic) IBOutlet UITextField *commentTextField;
+@property (weak, nonatomic) IBOutlet ScrollViewCustom *scrollView;
+
+
 @property UIToolbar *numberToolbar;
-@property UITextField *textField;
+@property UITextField *activeTextField;
 @property NSMutableDictionary *addressParameters;
 @property Place *place;
 @property MBProgressHUD *progress;
+@property CGFloat keyboardHeight;
 
 @end
 
@@ -52,86 +60,77 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
                                 [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                                 [[UIBarButtonItem alloc]initWithTitle:@"Применить" style:UIBarButtonItemStyleDone target:self action:@selector(cancelNumberPad)],
                                 nil];
+    
     self.numberToolbar.tintColor = [UIColor whiteColor];
     self.numberToolbar.barTintColor = [UIColor grayColor];
     [self.numberToolbar sizeToFit];
     
     self.nameTextField.delegate = self;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"name"])
+    {
+        _nameTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
+    }
     self.phoneTextField.delegate = self;
+    self.phoneTextField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"phone"])
     {
         _phoneTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"phone"];
     }
     self.phoneTextField.inputAccessoryView = self.numberToolbar;
-    self.houseTextField.inputAccessoryView = self.numberToolbar;
+//    self.houseTextField.inputAccessoryView = self.numberToolbar;
     self.stairTextField.inputAccessoryView = self.numberToolbar;
+    self.housingTextField.inputAccessoryView = self.numberToolbar;
     
-    self.commentTextView.delegate = self;
-    self.commentTextView.placeholder = @"Комментарий";
+    self.commentTextField.delegate = self;
+    self.commentTextField.placeholder = @"Комментарий";
     self.houseTextField.delegate = self;
     self.stairTextField.delegate = self;
+    self.housingTextField.delegate = self;
     
     self.addressParameters = [NSMutableDictionary new];
     
-    self.tableView.tableFooterView = [UIView new];
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(searchStreet)];
+    tapGesture.numberOfTapsRequired = 1;
+    [_streetView addGestureRecognizer:tapGesture];
     
-    //To make the border look very close to a UITextField
-    [_commentTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
-    [_commentTextView.layer setBorderWidth:1.0];
+//  //To make the border look very close to a UITextField
+//  [_commentTextView.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+//  [_commentTextView.layer setBorderWidth:1.0];
     
-    //The rounded corner part, where you specify your view's corner radius:
-    _commentTextView.layer.cornerRadius = 5;
-    _commentTextView.clipsToBounds = YES;
+//  //The rounded corner part, where you specify your view's corner radius:
+//  _commentTextView.layer.cornerRadius = 5;
+//  _commentTextView.clipsToBounds = YES;
+    
+    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"taxi5logo"]];
+    self.navigationItem.titleView = titleView;
 }
 
-#pragma mark - Table view delegate
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-//{
-//    
-//    return 50;
-//
-//}
-//
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 50)];
-//    label.backgroundColor = [UIColor greenColor];
-//    if (section == 0)
-//    {
-//        label.text = @"Информация о заказчике";
-//    }
-//    if (section == 1)
-//    {
-//        label.text = @"Где вы находитесь?";
-//    }
-//    return label;
-//}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)viewWillAppear:(BOOL)animated
 {
-    if (indexPath.section == RequestVCSectionTypeClientInfo) {
-        if (indexPath.row == 0) {
-            self.textField = self.nameTextField;
-        } else if (indexPath.row == 1) {
-            self.textField = self.phoneTextField;
-        }
-    } else if (indexPath.section == RequestVCSectionTypeAddress) {
-        if (indexPath.row == 0) {
-            SearchPlaceVC *destinationVC = [SearchPlaceVC storyboardVC];
-            destinationVC.delegate = self;
-            [self.navigationController pushViewController:destinationVC animated:YES];
-        }
-    } else if (indexPath.section == RequestVCSectionTypeAction) {
-        if (indexPath.row == 0){
-            [self sendOrderRequest];
-        }
-        if (indexPath.row == 1){
-            NSString *phoneNumber = [@"tel://" stringByAppendingString:@"7500"];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
-        }
-    }
+    
+    //регистрируемся на прием событий клавиатуры
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:self.view.window];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:self.view.window];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)setActiveHouseTextfield
+{
+//    [_houseTextField becomeFirstResponder];
+}
+
 
 - (void)searchAddressVC:(SearchAddressVC *)controller didChooseAddress:(NSDictionary *)address
 {
@@ -141,31 +140,15 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     self.stairTextField.text = self.addressParameters[@"staircase"];
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+//
 - (void)cancelNumberPad
 {
     [self.phoneTextField resignFirstResponder];
     [self.houseTextField resignFirstResponder];
     [self.stairTextField resignFirstResponder];
+    [self.housingTextField resignFirstResponder];
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if ([tableView respondsToSelector:@selector(setSeparatorInset:)])
-    {
-        [tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([tableView respondsToSelector:@selector(setLayoutMargins:)])
-    {
-        [tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
-    {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
 
 #pragma mark - Text field delegate
 
@@ -193,7 +176,7 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
             }
         }
         
-        if (textField.text.length == 4 && [string isEqualToString:@""])
+        if (textField.text.length == 1 && [string isEqualToString:@""])
         {
             return NO;
         }
@@ -207,6 +190,7 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    _activeTextField = textField;
     if (textField.text.length == 0 && textField == _phoneTextField)
     {
         textField.text = @"+375";
@@ -216,21 +200,17 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    UITableViewCell *cell;
-    if (SYSTEM_VERSION_IS_LESS_THAN(@"8.0")) {
-        cell = (UITableViewCell *)[[textField superview] superview];
-    } else {
-        cell = (UITableViewCell *)[textField superview];
-    }
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    if (indexPath.section == RequestVCSectionTypeClientInfo) {
-        [self.view becomeFirstResponder];
-        [textField resignFirstResponder];
-    }
+   [textField resignFirstResponder];
     return YES;
 }
 
 #pragma mark - Text view delegate
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    _activeTextField = (UITextField*)textView;
+    return YES;
+}
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
@@ -250,7 +230,14 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
     NSString *code = _place.code;
     NSString *building = _houseTextField.text;
     NSString *name = self.nameTextField.text;
+    NSString *comment = self.commentTextField.text;
     NSString *phone = self.phoneTextField.text;
+    [[NSUserDefaults standardUserDefaults] setObject:phone forKey:@"phone"];
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"name"];
+    phone = [phone stringByReplacingOccurrencesOfString:@"(" withString:@""];
+    phone = [phone stringByReplacingOccurrencesOfString:@")" withString:@""];
+    phone = [phone stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    
     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:nil delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
     if (![name length]) {
         errorAlert.message = @"Введите имя";
@@ -263,7 +250,7 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
         [errorAlert show];
         return;
     }
-    if ([phone length] < 17)
+    if ([phone length] < 13)
     {
         errorAlert.message = @"Телефон слишком короткий";
         [errorAlert show];
@@ -280,21 +267,34 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
         [errorAlert show];
         return;
     }
+
+    NSMutableDictionary *parameters = [@{@"addressID" : addressID, @"street" : street, @"city" : city, @"code" : code, @"building" : building, @"name" : name, @"phone" : phone, @"comment" : comment} mutableCopy];
+    if (_housingTextField.text.length != 0)
+    {
+        [parameters setObject:_housingTextField.text forKey:@"section"];
+    }
     
-    [[NSUserDefaults standardUserDefaults] setObject:phone forKey:@"phone"];
+    if (_stairTextField.text.length != 0)
+    {
+        [parameters setObject:_stairTextField.text forKey:@"porch"];
+    }
     
-    NSDictionary *parameters = @{@"addressID" : addressID, @"street" : street, @"city" : city, @"code" : code, @"building" : building, @"name" : name, @"phone" : phone};
-    
-    _progress = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    _progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _progress.labelText = @"Загрузка";
     [[Server sharedServer]sendOrderRequestWithParameters:parameters success:^(id response)
     {
         [_progress hide:YES];
-        UINavigationController *navController = [UINavigationController storyboardVC];
-        OrderVC *controller = [OrderVC storyboardVC];
-        controller.idOrder = response[@"id"];
-        navController.viewControllers = @[controller];
-        [self presentViewController:navController animated:YES completion:nil];
+//      OrderVC *controller = [OrderVC storyboardVC];
+//      controller.idOrder = response[@"id"];
+//      [self.navigationController pushViewController:controller animated:YES];
+        StatusBaseVC *statusBaseVC = [StatusBaseVC storyboardVC];
+        statusBaseVC.idOrder = response[@"id"];
+        statusBaseVC.orderParameters = parameters;
+        statusBaseVC.resendRequestBlock = ^ {
+            [self.navigationController popToViewController:self animated:YES];
+            [self sendOrderRequest];
+        };
+        [self.navigationController pushViewController:statusBaseVC animated:YES];
     }
     failure:^(NSError *error)
     {
@@ -319,9 +319,8 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
 {
     self.nameTextField.text = @"";
     self.phoneTextField.text = @"";
-    self.commentTextView.text = @"Комментарий";
+    self.commentTextField.text = @"Комментарий";
     [self.addressParameters removeAllObjects];
-    [self.tableView reloadData];
 }
 
 #pragma mark - RequestVCDelegate
@@ -334,6 +333,76 @@ typedef NS_ENUM(NSUInteger, RequestVCSectionType) {
         _houseTextField.text = place.building;
     }
     _place = place;
+}
+
+#pragma mark - IBActions
+
+- (IBAction)orderButtonPushed
+{
+    [self sendOrderRequest];
+}
+
+- (IBAction)callButtonPushed
+{
+    NSString *phoneNumber = [@"tel://" stringByAppendingString:@"7500"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+}
+
+- (IBAction)infoButtonPushed
+{
+    InfoVC *infoVC = [InfoVC storyboardVC];
+    [self.navigationController pushViewController:infoVC animated:YES];
+}
+
+- (void)searchStreet
+{
+    SearchPlaceVC *destinationVC = [SearchPlaceVC storyboardVC];
+    destinationVC.delegate = self;
+    [self.navigationController pushViewController:destinationVC animated:YES];
+}
+
+#pragma mark - uikeyboard methods
+
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    _keyboardHeight = [[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size.height;
+    
+    [_scrollView setFrame:CGRectMake(_scrollView.frame.origin.x,
+                                     _scrollView.frame.origin.y,
+                                     _scrollView.frame.size.width,
+                                     SCREEN_BOUNDS.size.height - _keyboardHeight)];
+    [self moveViewWithKeyboard];
+    _scrollView.scrollEnabled = NO;
+}
+
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    [_scrollView setFrame:CGRectMake(_scrollView.frame.origin.x,
+                                     _scrollView.frame.origin.y,
+                                     _scrollView.frame.size.width,
+                                     SCREEN_BOUNDS.size.height/* + _keyboardHeight*/)];
+    [self moveViewWithKeyboard];
+    _scrollView.scrollEnabled = YES;
+}
+
+- (void)moveViewWithKeyboard
+{
+//    if (_scrollView.height == SCREEN_BOUNDS.size.height)
+//    {
+//        [_scrollView setFrame:CGRectMake(_scrollView.frame.origin.x,
+//                                         _scrollView.frame.origin.y,
+//                                         _scrollView.frame.size.width,
+//                                         _scrollView.frame.size.height - _keyboardHeight)];
+//    }
+    
+    if (_activeTextField)
+    {
+        [_scrollView scrollRectToVisible:_activeTextField.superview.frame animated:YES];
+    }
+    else
+    {
+        [_scrollView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+    }
 }
 
 @end

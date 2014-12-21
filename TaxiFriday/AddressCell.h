@@ -1,8 +1,8 @@
 //
-//  AddressCell.h
+//  AdressCell.h
 //  TaxiFriday
 //
-//  Created by Stasevich Yauhen on 10/25/14.
+//  Created by Valik Kuchinsky on 23.11.14.
 //
 //
 
@@ -10,5 +10,7 @@
 
 @interface AddressCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 @end

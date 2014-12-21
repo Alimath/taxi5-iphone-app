@@ -51,9 +51,36 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
 
     self.definesPresentationContext = YES;
     
-    [self.tableView registerClass:[AddressCell class] forCellReuseIdentifier:cellReuseIdentifier];
+      
+    self.tableView.rowHeight = 44;
+    [self.tableView registerNib:[UINib nibWithNibName:@"AddressCell" bundle:nil] forCellReuseIdentifier:cellReuseIdentifier];
     
     self.tableView.tableFooterView = [UIView new];
+    
+//    self.tableView.backgroundColor = [UIColor blackColor];
+    
+    self.searchController.searchBar.barTintColor = [UIColor colorWithColorCode:@"F6F6F6"];
+    
+    self.searchController.searchBar.tintColor = [UIColor colorWithColorCode:@"5F3286"];
+    self.searchController.searchBar.placeholder = @"Улица или объект";
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithColorCode:@"5F3286"];
+    
+    UITableView *searchTableView = ((UITableViewController*)self.searchController.searchResultsController).tableView;
+    searchTableView.rowHeight = 44;
+    [searchTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+//    searchTableView.backgroundColor = [UIColor blackColor];
+    
+    
+//    self.searchController.searchBar.backgroundColor = [UIColor blackColor];
+    
+//    self.view.backgroundColor = [UIColor blackColor];
+    
+    CGRect frame = self.tableView.bounds;
+    frame.origin.y = -frame.size.height;
+    UIView* grayView = [[UIView alloc] initWithFrame:frame];
+//  grayView.backgroundColor = [UIColor blackColor];
+    [self.tableView addSubview:grayView];
     
     [self loadStreets];
     
@@ -66,6 +93,17 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
 - (void)viewWillAppear:(BOOL)animated
 {
     _spinner.center = CGPointMake(self.tableView.frame.size.width/2.0, self.tableView.frame.size.height/4.0);
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [_delegate setActiveHouseTextfield];
 }
 
 - (void)loadStreets
@@ -102,10 +140,10 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Dequeue a cell from self's table view.
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
+    AddressCell *cell = (AddressCell*)[self.tableView dequeueReusableCellWithIdentifier:cellReuseIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
+        cell = (AddressCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellReuseIdentifier];
     }
 
     Place *place;
@@ -143,9 +181,9 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
                                value:[UIFont boldSystemFontOfSize:17.0]
                                range:[place.name rangeOfString:[self.searchController.searchBar text] options:NSCaseInsensitiveSearch]];
         
-        cell.textLabel.attributedText = attributedName;
-        cell.detailTextLabel.attributedText = attributedAddress;
-        cell.imageView.image = [UIImage imageNamed:@"place"];
+        cell.titleLabel.attributedText = attributedName;
+        cell.detailLabel.attributedText = attributedAddress;
+//        cell.imageView.image = [UIImage imageNamed:@"place"];
     }
     else
     {
@@ -156,11 +194,13 @@ static NSString *cellReuseIdentifier = @"CellReuseIdentifier";
                                value:[UIFont boldSystemFontOfSize:13.0]
                                range:[place.name rangeOfString:[self.searchController.searchBar text] options:NSCaseInsensitiveSearch]];
         
-        cell.textLabel.attributedText = attributedAddress;
-        cell.detailTextLabel.attributedText = attributedName;
+        cell.titleLabel.attributedText = attributedAddress;
+        cell.detailLabel.attributedText = attributedName;
         cell.imageView.image = nil;
     }
-    
+//    cell.backgroundColor = [UIColor blackColor];
+//    cell.textLabel.textColor = [UIColor whiteColor];
+//    cell.detailTextLabel.textColor = [UIColor whiteColor];
     return cell;
 }
 

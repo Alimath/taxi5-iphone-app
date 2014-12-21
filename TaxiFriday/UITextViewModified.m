@@ -92,7 +92,7 @@
             _placeHolderLabel.lineBreakMode = NSLineBreakByWordWrapping;
             _placeHolderLabel.numberOfLines = 0;
             _placeHolderLabel.backgroundColor = [UIColor clearColor];
-            _placeHolderLabel.textAlignment = NSTextAlignmentCenter;
+            _placeHolderLabel.textAlignment = NSTextAlignmentLeft;
             _placeHolderLabel.alpha = 0;
             _placeHolderLabel.tag = 999;
             [self addSubview:_placeHolderLabel];

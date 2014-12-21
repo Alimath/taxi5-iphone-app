@@ -10,6 +10,8 @@
 
 NSString *const ServerAddress = @"http://taxi5.by";
 
+static BOOL kTestMode = YES;
+
 @implementation Server
 
 + (Server *)sharedServer
@@ -41,7 +43,13 @@ NSString *const ServerAddress = @"http://taxi5.by";
                      success:(void (^)(NSDictionary *))success
                      failure:(void (^)(NSError *))failure
 {
-    NSDictionary *parameters = @{@"q" : text};
+    NSDictionary *parameters = @{
+                                 @"q" : text,
+                                 @"options": @{
+//                                         @"escort": @(true),
+//                                         @"animals": @(true),
+//                                         @"test_orders": @(true)
+                                         }};
     
     [self GET:@"/api/locator/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON) {
         success(JSON);
@@ -56,35 +64,64 @@ NSString *const ServerAddress = @"http://taxi5.by";
                      success:(void (^)(NSDictionary *))success
                      failure:(void (^)(NSError *))failure
 {
-    NSDictionary *location = @{
+    NSString *comment;
+    if ([parameters[@"porch"] length])
+    {
+        comment = [NSString stringWithFormat:@"Подъезд %@; %@", parameters[@"porch"], parameters[@"comment"]];
+    }
+    else
+    {
+        comment = parameters[@"comment"];
+    }
+    
+    NSMutableDictionary *location = [@{
                                @"id" : parameters[@"addressID"],
                                @"street" : parameters[@"street"],
                                @"city" : parameters[@"city"],
                                @"code" : parameters[@"code"],
                                @"type" : @"address",
-                               @"building" : parameters[@"building"]
-                               };
+                               @"building" : parameters[@"building"],
+                               @"comment" : comment
+                               } mutableCopy];
+    if ([parameters objectForKey:@"section"])
+    {
+        [location setObject:parameters[@"section"] forKey:@"section"];
+    }
+    
+    if ([parameters objectForKey:@"porch"])
+    {
+        [location setObject:parameters[@"porch"] forKey:@"porch"];
+    }
     
     NSArray *routeArray = @[
                             @{
                                 @"name" : parameters[@"street"],
                                 @"type" : @"address",
-                                @"location" : location
+                                @"location" : location,
+                                @"comment" : comment
                               },
                             @{
                                 @"location" : @{}
                               }
                             ];
     
+
     NSDictionary *clientDictionary = @{
                                         @"phone" : parameters[@"phone"],
                                         @"name" : parameters[@"name"]
                                        };
     
+
     NSDictionary *requestParameters = @{
                                         @"route" : routeArray,
                                         @"client" : clientDictionary,
-                                        @"owner" : @""
+                                        @"owner" : @"",
+                                        
+                                        @"options": @{
+//                                            @"escort": @(true),
+//                                            @"animals": @(true),
+//                                            @"test_orders": @(true)
+                                            }
                                        };
     
     NSError *error;
@@ -119,7 +156,13 @@ NSString *const ServerAddress = @"http://taxi5.by";
     [self loadCookies];
     NSString *address = [NSString stringWithFormat:@"/api/order/%@/%@", parameters[@"id"], parameters[@"answer"]];
     
-    [self POST:address parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON)
+    parameters = @{@"options": @{
+//                               @"escort": @(true),
+//                               @"animals": @(true),
+//                               @"test_orders": @(true)
+                               }};
+    
+    [self POST:address parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON)
      {
          success(JSON);
      }
@@ -135,6 +178,11 @@ NSString *const ServerAddress = @"http://taxi5.by";
                                 failure:(void (^)(NSError *))failure
 {
     [self loadCookies];
+//    parameters = @{@"options": @{
+//                           @"escort": @(true),
+//                           @"animals": @(true),
+//                           @"test_orders": @(true)
+//                           }};
     NSString *address = [NSString stringWithFormat:@"/api/order/%@", parameters[@"id"]];
     [self GET:address parameters:nil success:^(AFHTTPRequestOperation *operation, NSDictionary *JSON)
     {

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddressCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Obg-cL-NkI" customClass="UIViewRounded">
+                        <rect key="frame" x="20" y="3" width="280" height="38"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8La-y8-ROa" userLabel="titleLabel">
+                                <rect key="frame" x="8" y="8" width="264" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="QHj-fP-dLJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYb-zQ-kYJ" userLabel="detailLabel">
+                                <rect key="frame" x="8" y="26" width="264" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="GZt-Nm-pPK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8La-y8-ROa" secondAttribute="trailing" constant="8" id="2fr-TX-0oQ"/>
+                            <constraint firstItem="8La-y8-ROa" firstAttribute="top" secondItem="Obg-cL-NkI" secondAttribute="top" constant="8" id="5Zc-mm-0pF"/>
+                            <constraint firstAttribute="trailing" secondItem="OYb-zQ-kYJ" secondAttribute="trailing" constant="8" id="a4D-ve-Eyg"/>
+                            <constraint firstItem="OYb-zQ-kYJ" firstAttribute="top" secondItem="Obg-cL-NkI" secondAttribute="top" constant="26" id="dfP-24-KnB"/>
+                            <constraint firstItem="8La-y8-ROa" firstAttribute="leading" secondItem="Obg-cL-NkI" secondAttribute="leading" constant="8" id="kPN-Ch-uCF"/>
+                            <constraint firstItem="OYb-zQ-kYJ" firstAttribute="leading" secondItem="Obg-cL-NkI" secondAttribute="leading" constant="8" id="t96-ex-8P7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Obg-cL-NkI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="5sM-rK-6tX"/>
+                    <constraint firstAttribute="bottom" secondItem="Obg-cL-NkI" secondAttribute="bottom" constant="2" id="FGH-fg-OyX"/>
+                    <constraint firstItem="Obg-cL-NkI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="JwO-W4-Uvn"/>
+                    <constraint firstAttribute="trailing" secondItem="Obg-cL-NkI" secondAttribute="trailing" constant="20" id="ofd-S5-Gwz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="detailLabel" destination="OYb-zQ-kYJ" id="0Yb-W3-bIw"/>
+                <outlet property="titleLabel" destination="8La-y8-ROa" id="pgE-l5-wPA"/>
+            </connections>
+            <point key="canvasLocation" x="529" y="502"/>
+        </tableViewCell>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

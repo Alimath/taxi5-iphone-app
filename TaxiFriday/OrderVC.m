@@ -8,10 +8,19 @@
 
 #import "OrderVC.h"
 
+typedef NS_ENUM(NSUInteger, OrderStatus) {
+    OrderStatusCarSearch,
+    OrderStatusCarFound,
+    OrderStatusCarNotFounded,
+    OrderStatusCarDelivering,
+    OrderStatusCarApproved
+};
+
 @interface OrderVC ()
 
 @property MBProgressHUD *progress;
-@property NSTimer *timer;
+@property NSTimer *requestTimer;
+@property NSTimer *timerTimer;
 @property NSInteger waitingTime;
 
 @end
@@ -28,11 +37,26 @@
     _progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _progress.labelText = @"Пожалуйста, подождите";
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0
+    _requestTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                               target:self
                                             selector:@selector(sendRequest)
                                             userInfo:nil
                                              repeats:YES];
+}
+
+- (void)setStatus:(OrderStatus)status
+{
+    
+}
+
+- (void)hideAllViews
+{
+    _noCarsImageView.hidden = YES;
+    _statusLabel.hidden = YES;
+    _waitingLabel.hidden = YES;
+    _waitTimerLabel.hidden = YES;
+    _approveOrderView.hidden = YES;
+    _averageTimeLabel.hidden = YES;
 }
 
 - (void)sendRequest
@@ -44,7 +68,7 @@
          {
              [_progress hide:YES];
              
-             [_timer invalidate];
+             [_requestTimer invalidate];
              
              _approveOrderView.hidden = NO;
              NSDictionary *eta = dict[@"eta"];
@@ -63,9 +87,31 @@
          {
              _statusLabel.text = @"Извините, в данный момент нет свободных автомобилей...";
              _statusLabel.hidden = NO;
-             _backButton.hidden = NO;
+             _noCarsImageView.hidden = NO;
              [_progress hide:YES];
-             [_timer invalidate];
+             [_requestTimer invalidate];
+         }
+         if ([dict[@"status"] isEqualToString:@"car_delivered"])
+         {
+             _waitTimerLabel.hidden = YES;
+             _waitingLabel.hidden = YES;
+//           [_requestTimer invalidate];
+             _statusLabel.hidden = NO;
+             _statusLabel.text = @"Автомобиль прибыл!";
+         }
+         if ([dict[@"status"] isEqualToString:@"order_completed"] || [dict[@"status"] isEqualToString:@"order_paid"])
+         {
+             _statusLabel.text = @"Спасибо, поездка оплачена!";
+             _payedImageView.hidden = NO;
+             [_requestTimer invalidate];
+         }
+         if ([dict[@"status"] isEqualToString:@"cancelled"])
+         {
+             _waitTimerLabel.hidden = YES;
+             _waitingLabel.hidden = YES;
+             _statusLabel.hidden = NO;
+             _statusLabel.text = @"Заказ отменен!";
+             [_requestTimer invalidate];
          }
      }
      failure:^(NSError *error)
@@ -81,9 +127,9 @@
     NSInteger hours = _waitingTime / 3600;
     _waitTimerLabel.text = [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)hours, (long)minutes, (long)seconds];
     _waitingTime-=1;
-    if (_waitingTime == 0)
+    if (_waitingTime <= 0)
     {
-        [_timer invalidate];
+        [_timerTimer invalidate];
     }
 }
 
@@ -103,15 +149,21 @@
          
              _waitTimerLabel.hidden = NO;
              _waitingLabel.hidden = NO;
-//           _statusLabel.text = @"Автомобиль найден!";
+//           _statusLabel.text = @"Автомобиль найден!"
              
              [self updateTimerLabel];
          
-             _timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+             _timerTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self
                                               selector:@selector(updateTimerLabel)
                                               userInfo:nil
                                                repeats:YES];
+             
+             _requestTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                                              target:self
+                                                            selector:@selector(sendRequest)
+                                                            userInfo:nil
+                                                             repeats:YES];
          }
      }
      failure:^(NSError *error)
@@ -138,7 +190,6 @@
               _statusLabel.text = @"Заказ отменен!";
               _statusLabel.hidden = NO;
              [self updateTimerLabel];
-             _backButton.hidden = NO;
 //             _timer = [NSTimer scheduledTimerWithTimeInterval:1.0
 //                                                       target:self
 //                                                     selector:@selector(updateTimerLabel)
@@ -152,6 +203,8 @@
          ALERT(@"Извините, произошла ошибка...");
      }];
 }
+
+
 
 - (IBAction)close:(id)sender
 {
